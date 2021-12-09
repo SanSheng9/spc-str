@@ -15,9 +15,14 @@ export default {
    margin: 0;
    padding: 0;
    box-sizing: border-box;
+   font-family:'Courier New', Courier, monospace;
+}
+*::after{
+     font-family:'Courier New', Courier, monospace;
+
 }
 body {
-  background-color: black;
+  background-color: rgb(0, 0, 0);
   height: 100vr;
 }
 </style>

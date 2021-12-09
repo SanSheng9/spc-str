@@ -24,13 +24,12 @@ export default {
 
 <style scoped>
 .wrapper{
-   padding: 0px 10px;
    margin: 0 auto;
-   margin-top: 80px;
 }
 .list{
    display: flex;
    justify-content: center;
    flex-wrap: wrap;
+   margin-top: 5em;
 }
 </style>

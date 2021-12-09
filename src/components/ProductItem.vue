@@ -6,7 +6,12 @@
    </div>
    <div class="block2">
    <div class="name" :class="{ admin: admin }">{{ product.name }}</div>
-   <div class="body">{{ product.body }}</div></div></div>
+   <div class="body">
+      <div class="mass">Mass: {{product.mass}}</div>
+      <div class="description">{{ product.body }}</div>
+   </div>
+   </div>
+      </div>
   </div>
 </template>
 
@@ -34,20 +39,18 @@ export default {
 
 <style scoped>
 .product{
-   height: 100%;
-   width: 20em;
    margin-left: 10px;
-   background-color: darkgray;
    flex-basis: 40%;
    margin: 15px;
 }
 .block{
    display: flex;
-   justify-content: center;
+   justify-content: space-between;
    align-items: center;
+   width: 100%;
 }
 .block1{
-   height: 150px;
+   height: 12em;
    padding: 15px;
 }
 .block1 img{
@@ -55,10 +58,13 @@ export default {
 }
 
 .block2 {
+   
 }
 .name{
    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
    font-size: 2em;
+   color: darkgray;
+
 }
 .admin::after {
    content: '-Удалить?';

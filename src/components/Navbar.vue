@@ -4,9 +4,9 @@
         <div class="navbar__flexbox">
         <div class="logo">PLANETS</div>
         <div class="links">
-           <p><router-link class="link" to="/">Solar system</router-link></p>
+           <p><router-link class="link" to="/">Solar_system</router-link></p>
            <p><router-link class="link" to="/products">Planets</router-link></p>
-          <p :class="{ non__visible: watchAdminMode }" @click="$emit('admin', true)">Admin mode</p>
+          <p :class="{ non__visible: watchAdminMode }" @click="$emit('admin', true)">Admin_mode</p>
         </div>
         </div>
      </div>
@@ -39,6 +39,7 @@ export default {
    top: 0;
    width: 100%;
    height: 100px;
+   text-transform: uppercase;
 }
 .wrapper {
    width: 80%;
@@ -54,7 +55,6 @@ export default {
 .logo, 
 .links {
    color: darkgrey;
-   font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
    font-size: 2em;
 }
 .logo {}

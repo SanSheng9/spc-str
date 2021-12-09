@@ -14,7 +14,7 @@
       </div>
       <div class="flexbox__list">
         </div>
-        <ProductsList :products='products' :admin='adminStatus'></ProductsList>
+        <transition-group name="p-list"><ProductsList :products='sortedProducts' :admin='adminStatus'></ProductsList></transition-group>
     </div>
   </div>
 </template>
@@ -45,19 +45,19 @@ export default {
     },
     async fetchProducts(){
       try {
-        const response = await axios('https://raw.githubusercontent.com/SanSheng9/spc-str/728d918c0427d70e42163b65e09cd762531147fa/products.json')
+        const response = await axios('https://raw.githubusercontent.com/SanSheng9/spc-str/main/planets.json')
         this.products = response.data;
-        console.log('IM GET')
       } catch (e) {
-        alert('Owibka')
+        alert('AHAHA ERROR')
       }
     }
     },
   mounted() {
+    this.fetchProducts();
   },
   computed: {
     sortedProducts() {
-      return [...this.products].sort((product1, product2) => product1[this.selectedSort].localeCompare(product2[this.selectedSort])
+      return [...this.products].sort((product1, product2) => product1[this.selectedSort]?.localeCompare(product2[this.selectedSort])
     )
     },
   },
@@ -96,4 +96,17 @@ export default {
   display: flex;
   justify-content: center;
   }
+.p-list-item {
+  display: inline-block;
+  margin-right: 10px;
+}
+.p-list-enter-active,
+.p-list-leave-active {
+  transition: all 1s ease;
+}
+.p-list-enter-from,
+.p-list-leave-to {
+  opacity: 0;
+  transform: translateY(30px);
+}
 </style>

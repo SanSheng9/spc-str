@@ -2,6 +2,7 @@ import Main from '@/views/Main'
 import Products from '@/views/Products'
 
 
+
 import { createRouter, createWebHistory } from 'vue-router'
 
 const routes = [

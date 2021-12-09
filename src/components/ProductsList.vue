@@ -1,7 +1,14 @@
 <template>
    <div class="wrapper">
    <div class="list">
-      <product-item :admin='admin' v-for='product in products' :product="product" :key="product.id"></product-item>
+      <transition-group name="products-list">
+      <product-item 
+      :admin='admin' 
+      v-for='product in products' 
+      :product="product" 
+      :key="product">
+      </product-item>
+      </transition-group>
    </div></div>
 </template>
 
@@ -31,5 +38,8 @@ export default {
    justify-content: center;
    flex-wrap: wrap;
    margin-top: 5em;
+}
+.products-list-move {
+  transition: transform 0.8s ease;
 }
 </style>

@@ -6,7 +6,6 @@
         <div class="form__search">
           <my-input class="form__search__input" placeholder="Search planets...">SPACE</my-input>
           <my-button class="form__search__btn">Search</my-button>
-          <my-button @click='fetchProducts'>Get</my-button>
         </div>
         <div class="form__select">
           <my-select :options='sortOptions' v-model="selectedSort"/>
@@ -14,7 +13,7 @@
       </div>
       <div class="flexbox__list">
         </div>
-        <transition-group name="p-list"><ProductsList :products='sortedProducts' :admin='adminStatus'></ProductsList></transition-group>
+        <ProductsList :products='sortedProducts' :admin='adminStatus'></ProductsList>
     </div>
   </div>
 </template>
@@ -33,7 +32,6 @@ export default {
       selectedSort: '',
       sortOptions: [
         {value: 'name', name: 'By name'},
-        {value: 'body', name: 'By dicsription'},
         {value: 'mass', name: 'By mass'},
         ]
    } 
@@ -96,17 +94,4 @@ export default {
   display: flex;
   justify-content: center;
   }
-.p-list-item {
-  display: inline-block;
-  margin-right: 10px;
-}
-.p-list-enter-active,
-.p-list-leave-active {
-  transition: all 1s ease;
-}
-.p-list-enter-from,
-.p-list-leave-to {
-  opacity: 0;
-  transform: translateY(30px);
-}
 </style>

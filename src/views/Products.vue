@@ -46,8 +46,8 @@ export default {
     async fetchProducts(){
       try {
         const response = await axios('https://raw.githubusercontent.com/SanSheng9/spc-str/728d918c0427d70e42163b65e09cd762531147fa/products.json')
-        this.posts = response.data;
-        console.log(response)
+        this.products = response.data;
+        console.log('IM GET')
       } catch (e) {
         alert('Owibka')
       }

@@ -6,13 +6,15 @@
         <div class="form__search">
           <my-input class="form__search__input" placeholder="Search planets...">SPACE</my-input>
           <my-button class="form__search__btn">Search</my-button>
+          <my-button @click='fetchProducts'>Get</my-button>
         </div>
         <div class="form__select">
           <my-select :options='sortOptions' v-model="selectedSort"/>
         </div>
       </div>
       <div class="flexbox__list">
-        </div><ProductsList :products='sortedProducts' :admin='adminStatus'></ProductsList>
+        </div>
+        <ProductsList :products='sortedProducts' :admin='adminStatus'></ProductsList>
     </div>
   </div>
 </template>
@@ -20,6 +22,8 @@
 <script>
 import Navbar from "@/components/Navbar";
 import ProductsList from "@/components/ProductsList";
+import axios from 'axios';
+
 export default {    
   components: { Navbar, ProductsList },
     data() {
@@ -34,28 +38,37 @@ export default {
       {name: 'Uranus', img: 'Uranus.jpg', mass: 86819e21, body: 'Uranus is the seventh planet from the Sun. Its name is a reference to the Greek god of the sky, Uranus, who, according to Greek mythology, was the great-grandfather of Ares (Mars), grandfather of Zeus (Jupiter) and father of Cronus (Saturn). '},
       {name: 'Neptune', img: 'Neptune.jpg', mass: 102413e21, body: 'Neptune is the eighth and farthest-known Solar planet from the Sun. In the Solar System, it is the fourth-largest planet by diameter, the third-most-massive planet, and the densest giant planet.'}],
       adminStatus: false,
-      selectedSort: '',
+      selectedSort: 'name',
       sortOptions: [
-        {value: 'title', name: 'By name'},
+        {value: 'name', name: 'By name'},
         {value: 'body', name: 'By dicsription'},
         {value: 'mass', name: 'By mass'},
         ]
    } 
   },
-  computed: {
-    sortedProducts() {
-      return [...this.products].sort((a, b) => {a[this.selectedSort].localeCompare(b[this.selectedSort])
-      })
-    },
-  },
+  
   methods: { 
     adminMode() {
       this.adminStatus = !this.adminStatus
+    },
+    async fetchProducts(){
+      try {
+        const response = await fetch('/api')
+        console.log(response)
+        let json = await response.json();
+      } catch (e) {
+        alert('Owibka')
+      }
     }
     },
   mounted() {
   },
-  
+  computed: {
+    sortedProducts() {
+      return [...this.products].sort((product1, product2) => product1[this.selectedSort].localeCompare(product2[this.selectedSort])
+    )
+    },
+  },
 }
 </script>
 <style>

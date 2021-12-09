@@ -12,7 +12,7 @@
         </div>
       </div>
       <div class="flexbox__list">
-        </div><ProductsList :products='products' :admin='adminStatus'></ProductsList>
+        </div><ProductsList :products='sortedProducts' :admin='adminStatus'></ProductsList>
     </div>
   </div>
 </template>
@@ -42,11 +42,20 @@ export default {
         ]
    } 
   },
+  computed: {
+    sortedProducts() {
+      return [...this.products].sort((a, b) => {a[this.selectedSort].localeCompare(b[this.selectedSort])
+      })
+    },
+  },
   methods: { 
     adminMode() {
       this.adminStatus = !this.adminStatus
     }
-    }
+    },
+  mounted() {
+  },
+  
 }
 </script>
 <style>

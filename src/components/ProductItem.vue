@@ -67,8 +67,8 @@ export default {
 
 }
 .admin::after {
-   content: '-Удалить?';
-   font-size: 0.5em;
+   content: ' - Удалить?';
+   font-size: 1em;
    color: red;
 }
 

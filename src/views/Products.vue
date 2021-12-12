@@ -4,7 +4,10 @@
     <div class="content">       
       <div class="form">
         <div class="form__search">
-          <my-input class="form__search__input" placeholder="Search planets...">SPACE</my-input>
+          <my-input class="form__search__input" 
+          placeholder="Search planets..."
+          v-model='searchQuery'
+          >SPACE</my-input>
           <my-button class="form__search__btn">Search</my-button>
         </div>
         <div class="form__select">
@@ -13,7 +16,7 @@
       </div>
       <div class="flexbox__list">
         </div>
-        <ProductsList :products='sortedProducts' :admin='adminStatus'></ProductsList>
+        <ProductsList :products='sortedAndSearchProducts' :admin='adminStatus'></ProductsList>
     </div>
   </div>
 </template>
@@ -56,6 +59,10 @@ export default {
   computed: {
     sortedProducts() {
       return [...this.products].sort((product1, product2) => product1[this.selectedSort]?.localeCompare(product2[this.selectedSort])
+    )
+    },
+    sortedAndSearchProducts() {
+      return this.sortedProducts.filter(product => product.title.inculdes(this.searchQuery))
     )
     },
   },

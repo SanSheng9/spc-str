@@ -16,7 +16,8 @@
       </div>
       <div class="flexbox__list">
         </div>
-        <ProductsList :products='sortedAndSearchProducts' :admin='adminStatus'></ProductsList>
+        <ProductsList v-if="products.length > 0" @delete='deleteProducts' :products='sortedAndSearchProducts' :admin='adminStatus'></ProductsList>
+        <div v-else class="none__planets">You destroied all planets!!!</div>
     </div>
   </div>
 </template>
@@ -33,10 +34,12 @@ export default {
       products: [],
       adminStatus: false,
       selectedSort: '',
+      searchQuery: '',
       sortOptions: [
         {value: 'name', name: 'By name'},
         {value: 'mass', name: 'By mass'},
-        ]
+        ],
+      dialogVisible: false,
    } 
   },
   
@@ -53,17 +56,20 @@ export default {
       }
     }
     },
+    deleteProducts(product){
+      this.products = this.products.filter(p => p.id ==! product.id)
+    },
   mounted() {
     this.fetchProducts();
   },
+    
   computed: {
     sortedProducts() {
       return [...this.products].sort((product1, product2) => product1[this.selectedSort]?.localeCompare(product2[this.selectedSort])
     )
     },
     sortedAndSearchProducts() {
-      return this.sortedProducts.filter(product => product.title.inculdes(this.searchQuery))
-    )
+      return this.sortedProducts.filter(product => product.name.toLowerCase().includes(this.searchQuery.toLowerCase()))
     },
   },
 }

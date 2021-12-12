@@ -6,7 +6,8 @@
       :admin='admin' 
       v-for='product in products' 
       :product="product" 
-      :key="product">
+      :key="product"
+      @delete='$emit("delete", product.id)'>
       </product-item>
       </transition-group>
    </div></div>
@@ -32,11 +33,12 @@ export default {
 <style scoped>
 .wrapper{
    margin: 0 auto;
+   width: 80%;
 }
 .list{
-   display: flex;
-   justify-content: center;
-   flex-wrap: wrap;
+   display: grid;
+   grid-template-columns: 1fr 1fr;
+   grid-gap: 20px;   
    margin-top: 5em;
 }
 .products-list-move {

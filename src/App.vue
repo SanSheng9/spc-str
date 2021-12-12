@@ -20,9 +20,12 @@ export default {
 *::after{
      font-family:'Courier New', Courier, monospace;
 
+
 }
 body {
   background-color: rgb(0, 0, 0);
-  height: 100vr;
+  height: 100vh;
+  overflow-y: hidden;
+  
 }
 </style>

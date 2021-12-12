@@ -1,11 +1,11 @@
 <template>
-  <div class="product">
+  <div class="product" >
      <div class="block">
    <div class="block1">
       <img :src='require("../assets/" + product.img)' alt="">
    </div>
    <div class="block2">
-   <div class="name" :class="{ admin: admin }">{{ product.name }}</div>
+   <div class="name" @click='deleteProduct' :class="{ admin: admin }">{{ product.name }}</div>
    <div class="body">
       <div class="mass">Mass: {{product.mass}}</div>
       <div class="description">{{ product.body }}</div>
@@ -17,6 +17,7 @@
 
 <script>
 export default {
+   emit: ['delete'],
    props: {
       product: {
          type: Object,
@@ -27,14 +28,16 @@ export default {
          default: false,
       }
    },
-   data() {
-      return {
-
+   methods: {
+      deleteProduct() {
+         if (admin === true) {
+            $emit('delete', product.id)
+         }
       }
-      
-      
-   },
+   }
 }
+   
+   
 </script>
 
 <style scoped>

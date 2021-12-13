@@ -23,7 +23,7 @@ export default {
 
 }
 body {
-  background-color: rgb(0, 0, 0);
+  background-color: rgb(255, 255, 255);
   height: 100vh;
   overflow-y: hidden;
   

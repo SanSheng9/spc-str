@@ -2,50 +2,32 @@
   <div><navbar></navbar>
   <div class="solar-system">
     <div class="center">
-      <div class="sun" ><img @click="writeText('SUN')" src="@/assets/Sun.png" alt="">
-        <div class="description">
-          <div class="description__text">{{container}}</div>
-          <div class="description__dash"></div></div>
+      <div class="sun" ><img src="@/assets/Sun.png" alt="">
+       
       </div>
       <div class="mercury"><img src="@/assets/Mercury.png" alt="">
-      <div class="description">
-          <div class="description__text"></div>
-          <div class="description__dash"></div></div>
+     
       </div>
       <div class="venus"><img src="@/assets/Venus.png" alt="">
-      <div class="description">
-          <div class="description__text"></div>
-          <div class="description__dash"></div></div>
+     
       </div>
       <div class="mars"><img src="@/assets/Mars.png" alt="">
-      <div class="description">
-          <div class="description__text"></div>
-          <div class="description__dash"></div></div>
+     
       </div>
       <div class="earth"><img src="@/assets/Earth.png" alt="">
-      <div class="description">
-          <div class="description__text"></div>
-          <div class="description__dash"></div></div>
+    
       </div>
       <div class="upiter"><img src="@/assets/jupiter.png" alt="">
-      <div class="description">
-          <div class="description__text"></div>
-          <div class="description__dash"></div></div>
+     
       </div>
       <div class="saturn"><img src="@/assets/Saturn.png" alt="">
-      <div class="description">
-          <div class="description__text"></div>
-          <div class="description__dash"></div></div>
+    
       </div>
       <div class="uranus"><img src="@/assets/Uranus.png" alt="">
-      <div class="description">
-          <div class="description__text"></div>
-          <div class="description__dash"></div></div>
+     
       </div>
       <div class="neptune"><img src="@/assets/Neptune.png" alt="">
-      <div class="description">
-          <div class="description__text"></div>
-          <div class="description__dash"></div></div>
+      
       </div>
     </div>>
   </div>
@@ -58,25 +40,10 @@ export default {
   components: { Navbar },
   data() {
     return {
-    t: "",
-    index: 0,
-    chars: 0,
-    speed: 100,
-    container: '',
     }
     },
     methods: {
-      writeText(t) {
-        this.chars = this.t.length
-        this.container.append(this.t[this.index]);
-           if (this.index < this.chars-1) {
-            this.index++;
-            setTimeout(function() {
-            writeText();
-              }, this.speed);
-            }
-        }
-      },
+      }
     }
 
   
@@ -102,6 +69,14 @@ export default {
   top: 0;
   left: -0.8em;
 }
+.sun:hover::before {
+  content: 'SUN';
+  color: gray;
+  position: absolute;
+  top: 1.7em;
+  left: 0em;
+  display: block;
+  font-size: 7em;}
 
 .mercury {
   width: 30px;
@@ -231,31 +206,5 @@ export default {
   z-index: 10;
 }
 
-.description .description__text {
-  display: inline;
-  color: gray;
-}
-
-.description .description__dash {
-  display: inline-block;
-  height: 3px;
-  width : 20px;
-  background-color: gray;
-  animation: blink .6s infinite linear;
-  margin-left: -18px;
-}
-@keyframes blink {
-  0% {
-  opacity : 1;
-  }
-   
-  99% {
-  opacity : 0;
-  }
-   
-  100% {
-  opacity: 1;
-  }
-}
 
 </style>

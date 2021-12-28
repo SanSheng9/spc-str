@@ -1,11 +1,11 @@
 <template>
-  <div class="product" >
+  <div class="product" @click='$emit("delete", product)'>
      <div class="block">
    <div class="block1">
       <img :src='require("../assets/" + product.img)' alt="">
    </div>
    <div class="block2">
-   <div class="name" @click='$emit("delete", product)' :class="{ admin: admin }">{{ product.name }}</div>
+   <div class="name"  :class="{ admin: admin }">{{ product.name }}</div>
    <div class="body">
       <div class="mass">Mass: {{product.mass}}</div>
       <div class="description">{{ product.body }}</div>
@@ -37,6 +37,7 @@ export default {
 </script>
 
 <style scoped>
+
 .product{
    margin-left: 10px;
    flex-basis: 40%;
@@ -66,7 +67,7 @@ export default {
 
 }
 .admin::after {
-   content: ' - Удалить?';
+   content: ' - Delete?';
    font-size: 1em;
    color: red;
 }

@@ -1,22 +1,20 @@
 <template>
-  <div><navbar></navbar>
+  <div class="main"><navbar></navbar>
   <div class="solar-system">    
     <div class="axis"     
       v-on:mouseover="stopAnimation"
       v-on:mouseleave="runAnimation" 
       ><img src="@/assets/ss-bg.png" alt="">
-      <my-dialog v-model:show="dialogVisible"><div class="planets">
-        {{planet.name}}
-        </div></my-dialog>
-      <div class="sun"><img src="@/assets/Sun.png" alt=""></div>
-      <div class="mercury" @click="selectPlanet('Mercury')" :class="{stoped: tmblr}"><img src="@/assets/Mercury.png" alt=""> </div>
-      <div class="venus" @click="selectPlanet('Venus')" :class="{stoped: tmblr}"><img src="@/assets/Venus.png" alt=""> </div>   
-      <div class="earth" @click="selectPlanet('Earth')" :class="{stoped: tmblr}"><img src="@/assets/Earth.png" alt=""></div>
-      <div class="mars" @click="selectPlanet('Mars')" :class="{stoped: tmblr}"><img src="@/assets/Mars.png" alt=""></div>
-      <div class="jupiter" @click="selectPlanet('Jupiter')" :class="{stoped: tmblr}"><img src="@/assets/jupiter.png" alt=""></div>
-      <div class="saturn" @click="selectPlanet('Saturn')" :class="{stoped: tmblr}"><img src="@/assets/Saturn.png" alt=""></div>
-      <div class="uranus" @click="selectPlanet('Uranus')" :class="{stoped: tmblr}"><img src="@/assets/Uranus.png" alt=""> </div>
-      <div class="neptune" @click="selectPlanet('Neptune')" :class="{stoped: tmblr}"><img src="@/assets/Neptune.png" alt=""></div>
+      <my-dialog v-model:show="dialogVisible"><product-selected :number='numberPlanet' :products='products'></product-selected></my-dialog>
+      <div class="sun" @click="selectPlanet(0)"><img src="@/assets/Sun.png" alt=""></div>
+      <div class="mercury" @click="selectPlanet(1)" :class="{stoped: tmblr}"><img src="@/assets/Mercury.png" alt=""> </div>
+      <div class="venus" @click="selectPlanet(2)" :class="{stoped: tmblr}"><img src="@/assets/Venus.png" alt=""> </div>   
+      <div class="earth" @click="selectPlanet(3)" :class="{stoped: tmblr}"><img src="@/assets/Earth.png" alt=""></div>
+      <div class="mars" @click="selectPlanet(4)" :class="{stoped: tmblr}"><img src="@/assets/Mars.png" alt=""></div>
+      <div class="jupiter" @click="selectPlanet(5)" :class="{stoped: tmblr}"><img src="@/assets/jupiter.png" alt=""></div>
+      <div class="saturn" @click="selectPlanet(6)" :class="{stoped: tmblr}"><img src="@/assets/Saturn.png" alt=""></div>
+      <div class="uranus" @click="selectPlanet(7)" :class="{stoped: tmblr}"><img src="@/assets/Uranus.png" alt=""> </div>
+      <div class="neptune" @click="selectPlanet(8)" :class="{stoped: tmblr}"><img src="@/assets/Neptune.png" alt=""></div>
     </div>
   </div>
   </div>
@@ -24,15 +22,18 @@
 
 <script>
 import Navbar from '@/components/Navbar.vue'
+import axios from 'axios';
+import ProductSelected from '@/components/ProductSelected.vue'
+
 export default {
-  components: { Navbar },
+  components: { Navbar, ProductSelected },
   data() {
     return {
       tmblr: false, 
       products: [],
       planet: [],
-      selectedPlanets: '',
       dialogVisible: false,
+      numberPlanet: '',
     }
     },
     methods: {
@@ -44,48 +45,36 @@ export default {
       },
       async fetchProducts(){
       try {
-        const response = await axios('https://raw.githubusercontent.com/SanSheng9/spc-str/main/planets.json')
+        const response = await axios('https://raw.githubusercontent.com/SanSheng9/spc-str/main/planets.json');
         this.products = response.data;
         console.log(this.products)
       } catch (e) {
-        alert('AHAHA ERROR')
+        console.log(e)
       } 
       },
-      selectPlanet(namePlanet) {
-        this.selectedPlanets = namePlanet,
-        this.dialogVisible = true
-        for (p in this.products) {
-          console.log(this.p)
-          if (this.p.name == this.selectedPlanets) {
-            this.planet = p;
-          } else {console.log('Этой планеты не существует')}
-        } 
-      },
-      mounted() {
+      selectPlanet(num){
+        this.numberPlanet = num;
+        this.dialogVisible = true;
+      }
+    },
+    mounted() {
         this.fetchProducts();
       },
-    
-      
-    }
-
 }
 </script>
 
 <style scoped>
 .solar-system{
   min-width: 1760px;
-  min-height: 93vh;
-  margin-top: 5vh;
 }
 .planets{
   color: darkgray;
 }
-.solar-system img{
-  width: 100%;
+.axis img{
 }
 .axis {
-  position: relative;
-  top: 25%;
+position: absolute;
+  top: 12vh;
   left: 25%;
   width: 85vh;
   }
@@ -113,73 +102,73 @@ export default {
 .mercury {
   width: 1vh;
   position: absolute;
-  animation: moving 3s infinite linear;
-  top: 47.5vh;
-  left: 47vh;
-  transform-origin: -5.25vh -5.25vh;}
+  animation: moving 2s infinite linear;
+     top: 48.5vh;
+    left: 48.5vh;
+    transform-origin: -5.7vh -5.7vh;}
   
 .venus { 
   width: 2.5vh;
   position: absolute;
   animation: moving 4s infinite linear;
-  top: 17vh;
-  left: 12vh;
-  transform-origin: -6vh -6vh;
+  top: 49vh;
+  left: 49vh;
+  transform-origin: -6.5vh -6.5vh;
 }
 
 .earth {
   width: 2.1vh;
-  position: relative;
-  animation: moving 5s infinite linear;
-  top: 20vh;
-  left: 15vh;
-  transform-origin: -8.5vh -8.5vh;
+  position: absolute;
+  animation: moving 6s infinite linear;
+top: 52vh;
+    left: 52vh;
+    transform-origin: -9.25vh -9.25vh;
 }
 
 .mars {
   width: 3vh;
-  position: relative;
-  animation: moving 6s infinite linear;
-  top: -39px;
-  left: 237px;
-  transform-origin: -170px -170px;
+  position: absolute;
+  animation: moving 8s infinite linear;
+    top: 54vh;
+    left: 54vh;
+    transform-origin: -11.75vh -11.75vh;
 }
 
 .jupiter {
-  width: 90px;
-  position: relative;
-  animation: moving 7s infinite linear;
-  top: -40px;
-  left: 305px;
-  transform-origin: -230px -230px;
+  width: 5vh;
+  position: absolute;
+  animation: moving 10s infinite linear;
+top: 59vh;
+    left: 59vh;
+    transform-origin: -16vh -16vh;
 }
 
 .saturn {
-  width: 115px;
-  position: relative;
-  animation: moving 7s infinite linear;
-  top: -77px;
-  left: 341px;
-  transform-origin: -275px -275px;
+  width: 4vh;
+  position: absolute;
+  animation: moving 12s infinite linear;
+    top: 63vh;
+    left: 62vh;
+    transform-origin: -20vh -20vh;
 }
 
 .uranus {
-  width: 115px;
-  position: relative;
-  animation: moving 8s infinite linear;
-  top: -140px;
-  left: 394px;
-  transform-origin: -330px -330px;
+  width: 4vh;
+  position: absolute;
+  animation: moving 14s infinite linear;
+    top: 67vh;
+    left: 66vh;
+    transform-origin: -23.75vh -23.75vh;
 
 }
 
 .neptune {
-  width: 100px;
-  position: relative;
-  animation: moving 9s infinite linear;
-  top: -206px;
-  left: 445px;
-  transform-origin: -385px -385px;
+  width: 3vh;
+  position: absolute;
+  animation: moving 16s infinite linear;
+top: 71vh;
+    left: 70vh;
+    transform-origin: -27.5vh -27.5vh;
 }
 
 

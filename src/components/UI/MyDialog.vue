@@ -17,7 +17,7 @@
         },
         methods: {
             hideDialog() {
-                $emit('update:show', false)
+                this.$emit('update:show', false)
             }
         }
     }
@@ -38,5 +38,6 @@
     min-height: 10em;
     min-width: 10em;
     padding: 20px;
+    max-width: 40%;
 }
 </style>

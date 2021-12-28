@@ -5,7 +5,7 @@
         <div class="logo" >PLANETS</div>
         <div class="links">
            <p><router-link class="link" to="/">Solar_system</router-link></p>
-           <p><router-link class="link" to="/products">Planets</router-link></p>
+           <p><router-link class="link" to="/products">Objects</router-link></p>
           <p :class="{ non__visible: watchAdminMode }" @click="$emit('admin', true)">Admin_mode</p>
         </div>
         </div>

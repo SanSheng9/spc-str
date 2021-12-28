@@ -53,16 +53,14 @@ export default {
           const response = await axios('https://raw.githubusercontent.com/SanSheng9/spc-str/main/planets.json');
           this.products = response.data;
           this.isProductsLoading = false
-          console.log(this.products)
           }, 1000)
       } catch (e) {
         alert('AHAHA ERROR')
       } finally {}
     },
-    deleteProducts(product){
+    deleteProducts(planet){
       if (this.adminStatus == true) {
-        console.log(product)
-        this.products = this.products.filter(p => p.id ==! product.id)}
+        this.products = this.products.filter(p => p.id !== planet.id)}
     },
  
   },

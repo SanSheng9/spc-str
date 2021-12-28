@@ -26,6 +26,6 @@ body {
   background-color: rgb(0, 0, 0);
   height: 100vh;
   overflow-y: hidden;
-  
+  min-width: 100%;
 }
 </style>

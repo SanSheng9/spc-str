@@ -6,8 +6,8 @@
       :admin='admin' 
       v-for='product in products' 
       :product="product" 
-      :key="product"
-      @delete='$emit("delete", product.id)'>
+      v-bind:key="product.id"
+      @delete='$emit("delete", product)'>
       </product-item>
       </transition-group>
    </div></div>
@@ -16,6 +16,7 @@
 <script>
 import ProductItem from '@/components/ProductItem.vue'
 export default {
+   emit: ['delete'],
   components: { ProductItem },
    props: {
       products: {

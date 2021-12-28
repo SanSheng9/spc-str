@@ -2,7 +2,7 @@
   <div class="navbar">
      <div class="wrapper">
         <div class="navbar__flexbox">
-        <div class="logo">PLANETS</div>
+        <div class="logo" >PLANETS</div>
         <div class="links">
            <p><router-link class="link" to="/">Solar_system</router-link></p>
            <p><router-link class="link" to="/products">Planets</router-link></p>
@@ -15,7 +15,7 @@
 
 <script>
 export default {
-   emits: ['admin'],
+   emits: ['admin', 'run'],
    props: {
       watchAdminMode: {
          type: Boolean,
@@ -27,18 +27,15 @@ export default {
     } 
   },
   methods: {
+
      }
 }
 </script>
 
 <style scoped>
 .navbar {
-   display: block;
-   position: absolute;
-   left: 0;
-   top: 0;
-   width: 100%;
-   height: 100px;
+   min-width: 1760px;;
+   height: 7vh;
    text-transform: uppercase;
 }
 .wrapper {

@@ -14,10 +14,8 @@
           <my-select :options='sortOptions' v-model="selectedSort"/>
         </div>
       </div>
-      <div class="flexbox__list">
-        </div>
-        <ProductsList v-if="products.length > 0" @delete='deleteProducts' :products='sortedAndSearchProducts' :admin='adminStatus'></ProductsList>
-        <div v-else class="none__planets">You destroied all planets!!!</div>
+        <ProductsList v-if="!isProductsLoading" @delete='deleteProducts' :products='sortedAndSearchProducts' :admin='adminStatus'></ProductsList>
+        <div v-else class="loading"><img src="@/assets/loading.gif" alt=""></div>
     </div>
   </div>
 </template>
@@ -35,6 +33,7 @@ export default {
       adminStatus: false,
       selectedSort: '',
       searchQuery: '',
+      isProductsLoading: true,
       sortOptions: [
         {value: 'name', name: 'By name'},
         {value: 'mass', name: 'By mass'},
@@ -49,20 +48,28 @@ export default {
     },
     async fetchProducts(){
       try {
-        const response = await axios('https://raw.githubusercontent.com/SanSheng9/spc-str/main/planets.json')
-        this.products = response.data;
+        this.isProductsLoading = true;
+        setTimeout(async () => {
+          const response = await axios('https://raw.githubusercontent.com/SanSheng9/spc-str/main/planets.json');
+          this.products = response.data;
+          this.isProductsLoading = false
+          console.log(this.products)
+          }, 1000)
       } catch (e) {
         alert('AHAHA ERROR')
-      }
-    }
+      } finally {}
     },
     deleteProducts(product){
-      this.products = this.products.filter(p => p.id ==! product.id)
+      if (this.adminStatus == true) {
+        console.log(product)
+        this.products = this.products.filter(p => p.id ==! product.id)}
     },
-  mounted() {
+ 
+  },
+   mounted() {
     this.fetchProducts();
   },
-    
+  
   computed: {
     sortedProducts() {
       return [...this.products].sort((product1, product2) => product1[this.selectedSort]?.localeCompare(product2[this.selectedSort])
@@ -78,6 +85,10 @@ export default {
 .content{
   margin: 0 auto;
   margin-top: 100px;
+}
+.loading {
+
+  margin: 10em 50%;
 }
 .form{
   display: flex;

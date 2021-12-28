@@ -5,7 +5,7 @@
       <img :src='require("../assets/" + product.img)' alt="">
    </div>
    <div class="block2">
-   <div class="name" @click='deleteProduct' :class="{ admin: admin }">{{ product.name }}</div>
+   <div class="name" @click='$emit("delete", product)' :class="{ admin: admin }">{{ product.name }}</div>
    <div class="body">
       <div class="mass">Mass: {{product.mass}}</div>
       <div class="description">{{ product.body }}</div>
@@ -29,13 +29,9 @@ export default {
       }
    },
    methods: {
-      deleteProduct() {
-         if (admin === true) {
-            $emit('delete', product.id)
-         }
       }
    }
-}
+
    
    
 </script>

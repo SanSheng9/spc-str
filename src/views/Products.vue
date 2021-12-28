@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="products">
     <Navbar :watchAdminMode='false' @admin="adminMode"></Navbar>
     <div class="content">       
       <div class="form">
@@ -80,13 +80,17 @@ export default {
 }
 </script>
 <style>
+.products{
+  height: 100vh;
+  min-width: 142vh;
+}
 .content{
+  max-width: 95%;
   margin: 0 auto;
-  margin-top: 100px;
 }
 .loading {
 
-  margin: 10em 50%;
+  margin: 12em 50%;
 }
 .form{
   display: flex;

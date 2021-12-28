@@ -128,7 +128,7 @@ top: 52vh;
 .mars {
   width: 3vh;
   position: absolute;
-  animation: moving 8s infinite linear;
+  animation: moving 4s infinite linear;
     top: 54vh;
     left: 54vh;
     transform-origin: -11.75vh -11.75vh;
@@ -146,7 +146,7 @@ top: 59vh;
 .saturn {
   width: 4vh;
   position: absolute;
-  animation: moving 12s infinite linear;
+  animation: moving 8s infinite linear;
     top: 63vh;
     left: 62vh;
     transform-origin: -20vh -20vh;
@@ -165,7 +165,7 @@ top: 59vh;
 .neptune {
   width: 3vh;
   position: absolute;
-  animation: moving 16s infinite linear;
+  animation: moving 10s infinite linear;
 top: 71vh;
     left: 70vh;
     transform-origin: -27.5vh -27.5vh;

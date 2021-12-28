@@ -1,8 +1,8 @@
 <template>
    <div class="wrapper">
-   <div class="list">
+   <div class="list" v-if="products.length > 0" >
       <transition-group name="products-list">
-      <product-item 
+      <product-item
       :admin='admin' 
       v-for='product in products' 
       :product="product" 
@@ -10,7 +10,9 @@
       @delete='$emit("delete", product)'>
       </product-item>
       </transition-group>
-   </div></div>
+   </div>
+   <div v-else class="no_products">
+      <p>All planet is destroyed!</p></div></div>
 </template>
 
 <script>
@@ -34,13 +36,22 @@ export default {
 <style scoped>
 .wrapper{
    margin: 0 auto;
-   width: 80%;
+   width: 85%;
+}
+.no_products{
+   color: white;
+   position: absolute;
+   top: 30%;
+   left: 25%;
+}
+.no_products p{
+   font-size: 5em;
 }
 .list{
    display: grid;
    grid-template-columns: 1fr 1fr;
    grid-gap: 20px;   
-   margin-top: 5em;
+   margin-top: 2em;
 }
 .products-list-move {
   transition: transform 0.8s ease;

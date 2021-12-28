@@ -2,7 +2,7 @@
   <div class="navbar">
      <div class="wrapper">
         <div class="navbar__flexbox">
-        <div class="logo" >PLANETS</div>
+        <div class="logo" >Space</div>
         <div class="links">
            <p><router-link class="link" to="/">Solar_system</router-link></p>
            <p><router-link class="link" to="/products">Objects</router-link></p>
@@ -34,7 +34,7 @@ export default {
 
 <style scoped>
 .navbar {
-   min-width: 1760px;;
+   min-width: 142vh;
    height: 7vh;
    text-transform: uppercase;
 }

@@ -1,22 +1,23 @@
 <template>
-  <div class="main"><navbar></navbar>
-  <div class="solar-system">    
+  <div class="main">
+    <navbar></navbar>
+    <div class="solar-system">    
     <div class="axis"     
       v-on:mouseover="stopAnimation"
       v-on:mouseleave="runAnimation" 
       ><img src="@/assets/ss-bg.png" alt="">
-      <my-dialog v-model:show="dialogVisible"><product-selected :number='numberPlanet' :products='products'></product-selected></my-dialog>
-      <div class="sun" @click="selectPlanet(0)"><img src="@/assets/Sun.png" alt=""></div>
-      <div class="mercury" @click="selectPlanet(1)" :class="{stoped: tmblr}"><img src="@/assets/Mercury.png" alt=""> </div>
-      <div class="venus" @click="selectPlanet(2)" :class="{stoped: tmblr}"><img src="@/assets/Venus.png" alt=""> </div>   
-      <div class="earth" @click="selectPlanet(3)" :class="{stoped: tmblr}"><img src="@/assets/Earth.png" alt=""></div>
-      <div class="mars" @click="selectPlanet(4)" :class="{stoped: tmblr}"><img src="@/assets/Mars.png" alt=""></div>
-      <div class="jupiter" @click="selectPlanet(5)" :class="{stoped: tmblr}"><img src="@/assets/jupiter.png" alt=""></div>
-      <div class="saturn" @click="selectPlanet(6)" :class="{stoped: tmblr}"><img src="@/assets/Saturn.png" alt=""></div>
-      <div class="uranus" @click="selectPlanet(7)" :class="{stoped: tmblr}"><img src="@/assets/Uranus.png" alt=""> </div>
-      <div class="neptune" @click="selectPlanet(8)" :class="{stoped: tmblr}"><img src="@/assets/Neptune.png" alt=""></div>
-    </div>
-  </div>
+      <my-dialog v-model:show="dialogVisible"><product-selected :number='numberPlanet' :products='products'></product-selected></my-dialog>    
+              <div class="sun" @click="selectPlanet(0)"><img src="@/assets/Sun.png" alt=""></div>
+        <div class="mercury" @click="selectPlanet(1)" :class="{stoped: tmblr}"><img src="@/assets/Mercury.png" alt=""> </div>
+        <div class="venus" @click="selectPlanet(2)" :class="{stoped: tmblr}"><img src="@/assets/Venus.png" alt=""> </div>   
+        <div class="earth" @click="selectPlanet(3)" :class="{stoped: tmblr}"><img src="@/assets/Earth.png" alt=""></div>
+        <div class="mars" @click="selectPlanet(4)" :class="{stoped: tmblr}"><img src="@/assets/Mars.png" alt=""></div>
+        <div class="jupiter" @click="selectPlanet(5)" :class="{stoped: tmblr}"><img src="@/assets/jupiter.png" alt=""></div>
+        <div class="saturn" @click="selectPlanet(6)" :class="{stoped: tmblr}"><img src="@/assets/Saturn.png" alt=""></div>
+        <div class="uranus" @click="selectPlanet(7)" :class="{stoped: tmblr}"><img src="@/assets/Uranus.png" alt=""> </div>
+        <div class="neptune" @click="selectPlanet(8)" :class="{stoped: tmblr}"><img src="@/assets/Neptune.png" alt=""></div>
+      </div>
+      </div>
   </div>
 </template>
 
@@ -63,127 +64,109 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
+.main{
+  max-width: 80vw;
+  margin: 0 auto;
+}
+.main img{
+  width: 100%;
+}
+
+
 .solar-system{
-  min-width: 1760px;
+  position: relative;
+  margin-top: 5vw;
+
 }
 .planets{
   color: darkgray;
 }
-.axis img{
-}
 .axis {
-position: absolute;
-  top: 12vh;
-  left: 25%;
-  width: 85vh;
-  }
+  width: 80vw;
+  margin: 0 auto;
+  position: relative;
+}
 .axis img{
   width: 100%;
 }
-
 .axis .stoped{
   animation-play-state: paused;
 } 
-
 @keyframes moving {
     100% {
       transform: rotate(-360deg);      
      transition-delay: 0.3s;
 }
 }
-.sun {
-  width: 10vh;
-  position: absolute;
-  top: 38vh;
-  left: 38vh;
-}
 
+.sun {
+  width: 10vw;
+  position: absolute;
+  top: 35vw;
+  left: 35vw;
+}
 .mercury {
-  width: 1vh;
+  width: 1vw;
   position: absolute;
   animation: moving 2s infinite linear;
-     top: 48.5vh;
-    left: 48.5vh;
-    transform-origin: -5.7vh -5.7vh;}
-  
+  top: 45.5vw;
+  left: 45.5vw;
+  transform-origin: -5.3vw -5.3vw;}
 .venus { 
-  width: 2.5vh;
+  width: 2.5vw;
   position: absolute;
   animation: moving 4s infinite linear;
-  top: 49vh;
-  left: 49vh;
-  transform-origin: -6.5vh -6.5vh;
+ top: 46.96vw;
+    left: 45.96vw;
+    transform-origin: -6.2vw -6.2vw;
 }
-
 .earth {
-  width: 2.1vh;
+  width: 2.1vw;
   position: absolute;
   animation: moving 6s infinite linear;
-top: 52vh;
-    left: 52vh;
-    transform-origin: -9.25vh -9.25vh;
+    top: 49vw;
+    left: 49vw;
+    transform-origin: -8.9vw -8.9vw;
 }
-
 .mars {
-  width: 3vh;
+  width: 3vw;
   position: absolute;
   animation: moving 4s infinite linear;
-    top: 54vh;
-    left: 54vh;
-    transform-origin: -11.75vh -11.75vh;
+    top: 51vw;
+    left: 51vw;
+    transform-origin: -11vw -11vw;
 }
-
 .jupiter {
-  width: 5vh;
+  width: 5vw;
   position: absolute;
   animation: moving 10s infinite linear;
-top: 59vh;
-    left: 59vh;
-    transform-origin: -16vh -16vh;
+    top: 55vw;
+    left: 55vw;
+    transform-origin: -15vw -15vw;
 }
-
 .saturn {
-  width: 4vh;
+  width: 4vw;
   position: absolute;
   animation: moving 8s infinite linear;
-    top: 63vh;
-    left: 62vh;
-    transform-origin: -20vh -20vh;
+top: 59vw;
+    left: 59vw;
+    transform-origin: -18.5vw -18.5vw;
 }
-
 .uranus {
-  width: 4vh;
+  width: 4vw;
   position: absolute;
   animation: moving 14s infinite linear;
-    top: 67vh;
-    left: 66vh;
-    transform-origin: -23.75vh -23.75vh;
-
+    top: 62vw;
+    left: 62vw;
+    transform-origin: -22vw -22vw;
 }
-
 .neptune {
-  width: 3vh;
+  width: 3vw;
   position: absolute;
   animation: moving 10s infinite linear;
-top: 71vh;
-    left: 70vh;
-    transform-origin: -27.5vh -27.5vh;
+    top: 66vw;
+    left: 66vw;
+    transform-origin: -26vw -26vw;
 }
-
-
-.description {
-  width : 99%;
-  text-align: center;
-  height: 48px;
-  line-height: 48px;
-  font-size : 37px;
-  position : absolute;
-  top: 3em;
-  left: 3em;
-  color: grey;
-  z-index: 10;
-}
-
-
 </style>

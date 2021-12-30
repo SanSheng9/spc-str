@@ -40,21 +40,20 @@ export default {
 
 .product{
    margin-left: 10px;
-   flex-basis: 40%;
    margin: 15px;
 }
 .block{
-   display: flex;
-   justify-content: space-between;
-   align-items: center;
+   display: grid;
+   grid-template-columns: 1fr 2fr;
+   grid-gap: 20px;   
    width: 100%;
+   align-items: center;
 }
 .block1{
-   height: 12em;
    padding: 15px;
 }
 .block1 img{
-   height: 100%;
+   width: 100%;
 }
 
 .block2 {

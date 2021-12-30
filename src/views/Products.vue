@@ -1,5 +1,5 @@
 <template>
-  <div class="products">
+  <div class="container_products">
     <Navbar :watchAdminMode='false' @admin="adminMode"></Navbar>
     <div class="content">       
       <div class="form">
@@ -80,9 +80,9 @@ export default {
 }
 </script>
 <style>
-.products{
-  height: 100vh;
-  min-width: 142vh;
+.container_products{
+  max-width: 80vw;
+  margin: 0 auto;
 }
 .content{
   max-width: 95%;

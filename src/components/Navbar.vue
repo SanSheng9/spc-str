@@ -34,14 +34,13 @@ export default {
 
 <style scoped>
 .navbar {
-   min-width: 142vh;
+   width: 100%;
    height: 7vh;
    text-transform: uppercase;
+   display: block;
 }
 .wrapper {
-   width: 80%;
-   padding: 10px;
-   margin: 0 auto;
+   padding: 10px 0px 20px;
 }
 
 .navbar__flexbox {

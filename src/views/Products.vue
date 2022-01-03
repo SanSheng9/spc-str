@@ -85,16 +85,15 @@ export default {
   margin: 0 auto;
 }
 .content{
-  max-width: 95%;
+  max-width: 1200px;
   margin: 0 auto;
 }
 .loading {
-
-  margin: 12em 50%;
+  margin: 20vw 30vw;
 }
 .form{
   display: flex;
-  width: 70%;
+  max-width: 100%;
   justify-content: space-between;
   align-items: center;
   margin: 0 auto;
@@ -119,5 +118,12 @@ export default {
 .flexbox__list{
   display: flex;
   justify-content: center;
+  }
+  @media (max-width: 968px) {
+    .form {
+      margin-top: 10vw;
+      margin-bottom: 10vw;
+      display: block;
+    }
   }
 </style>

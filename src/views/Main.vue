@@ -35,6 +35,7 @@ export default {
       planet: [],
       dialogVisible: false,
       numberPlanet: '',
+      scrollPosition: 0,
     }
     },
     methods: {
@@ -56,10 +57,18 @@ export default {
       selectPlanet(num){
         this.numberPlanet = num;
         this.dialogVisible = true;
-      }
+      },
+      doScroll(e) {
+          this.scrollPosition = e.srcElement.scrollingElement.scrollTop;
+          if (scrollPosition > 200) {
+            this.tmblr = true;
+          } else (scrollPosition > 500) 
+          {this.tmblr = false;}
+        }
     },
     mounted() {
         this.fetchProducts();
+        window.addEventListener ('scroll', this.doScroll);
       },
 }
 </script>
@@ -77,7 +86,11 @@ export default {
 .solar-system{
   position: relative;
   margin-top: 5vw;
-
+}
+@media (max-width: 968px) {
+  .solar-system{
+    margin-top: 10em;
+  }
 }
 .planets{
   color: darkgray;

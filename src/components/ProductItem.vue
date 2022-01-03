@@ -45,7 +45,7 @@ export default {
 .block{
    display: grid;
    grid-template-columns: 1fr 2fr;
-   grid-gap: 20px;   
+   grid-gap: 5px;   
    width: 100%;
    align-items: center;
 }
@@ -53,7 +53,7 @@ export default {
    padding: 15px;
 }
 .block1 img{
-   width: 100%;
+   max-width: 100%;
 }
 
 .block2 {
@@ -73,5 +73,23 @@ export default {
 
 .body {
    color: gray;
+   font-size: 1em;
+}
+
+@media (max-width: 1250px) {
+   .block{
+      display: block;
+      margin: 0 auto;
+   }
+   .block1{
+      max-width: 18em;
+      margin: 0 auto;
+   }
+   .body{
+      font-size: 1em;
+   }
+   .product{
+      margin: 0;
+   }
 }
 </style>

@@ -50,8 +50,15 @@ export default {
 .list{
    display: grid;
    grid-template-columns: 1fr 1fr;
-   grid-gap: 20px;   
-   margin-top: 2em;
+   grid-gap: 10px;   
+   margin-top: 1em;
+}
+
+
+@media (max-width: 1250px) {
+   .list{
+      grid-template-columns: 1fr;
+   }
 }
 .products-list-move {
   transition: transform 0.8s ease;

@@ -89,7 +89,10 @@ export default {
   margin: 0 auto;
 }
 .loading {
-  margin: 20vw 30vw;
+  margin-top: 10em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .form{
   display: flex;

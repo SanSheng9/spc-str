@@ -12,7 +12,12 @@
       </transition-group>
    </div>
    <div v-else class="no_products">
-      <p>All planet is destroyed!</p></div></div>
+      <div class="container">
+         <img src="@/assets/blackhole.svg" alt="">
+         <p>No objects</p>
+         </div>
+   </div>
+   </div>
 </template>
 
 <script>
@@ -40,12 +45,22 @@ export default {
 }
 .no_products{
    color: white;
-   position: absolute;
-   top: 30%;
-   left: 25%;
+   margin: 0 auto;
+   max-width: 9em;
+   margin-top: 10em;
+   align-items: center;
 }
 .no_products p{
-   font-size: 5em;
+   font-size:  1.3em;
+}
+.container{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction: column;
+}
+.container img{
+   max-width: 100%;
 }
 .list{
    display: grid;

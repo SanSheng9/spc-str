@@ -16,9 +16,9 @@
                   <!-- Ссылки-навигация  -->
                   <div class="header__menu" :class="{active: activeBurger}">
                      <div class="header__list">
-                        <p><router-link class="link" to="/">Solar_system</router-link></p>
-                        <p><router-link class="link" to="/products">Objects</router-link></p>
-                        <p :class="{ non__visible: watchAdminMode }" @click="$emit('admin', true), activeBurger = false">Admin_mode</p>
+                        <p @click="movePage('page-1')" :class="{active_list: activeSs}">Solar_system</p>
+                        <p @click="movePage('page-2')" :class="{active_list: activeProd}">Objects</p>
+                        <p :class="{ non__visible: watchAdminMode }" @click="$emit('admin', true), activeBurger = false">God_mode</p>
                      </div>
                   </div> 
                </div>
@@ -28,11 +28,14 @@
 
 <script>
 export default {
-   emits: ['admin', 'run'],
+   emits: ['admin', 'move'],
    props: {
       watchAdminMode: {
          type: Boolean,
          default: true,
+      },
+      page: {
+         type: Number 
       }
    },
    data() {
@@ -40,20 +43,46 @@ export default {
        activeBurger: false,
        selectMain: true,
        selectProducts: false,
+       activeSs: true,
+       activeProd: false,
     } 
   },
-  methods: {
-
-}}
+  methods: { 
+     movePage(page){
+        this.$emit('move', page)
+        this.activeBurger = false
+     }
+},
+watch: {
+   page(newPage, oldPage){
+      if (newPage == 1 && oldPage == 0) {
+         this.activeSs = true
+         this.activeProd = false
+      } else {
+         this.activeProd = true
+         this.activeSs = false
+      }
+   }
+}
+}
 </script>
 
 <style scoped>
 .header {
-   width: 100%;
+   min-width: 100%;
    height: 7vh;
    text-transform: uppercase;
-   display: block;
    z-index: 50;
+background: rgb(0,0,0);
+background: linear-gradient(180deg, rgba(0,0,0,1) 41%, rgba(1,1,1,0.6867121848739496) 61%, rgba(1,1,1,0.5998774509803921) 77%, rgba(1,1,1,0.33657212885154064) 90%, rgba(255,255,255,0) 100%);  position: fixed;
+   top: 0;
+   left: 0;
+   padding-bottom: 20px;
+}
+.container{
+   max-width: 70%;
+   margin: 0 auto;
+   padding-top: 10px;
 }
 
 .header__body{
@@ -80,10 +109,13 @@ export default {
    position: relative;
    z-index: 2;
 }
+.header__list p{
+   cursor: pointer;
+}
 
 .container .header__menu p{
    color: darkgray;
-   font-size: 1.7em;
+   font-size: 2em;
    margin: 0px 0px 0px 1em;
 }
 
@@ -92,7 +124,11 @@ export default {
    text-decoration: none;
    color: darkgray;
 }
-
+.header__list p.active_list{
+   color: white;
+   transition: 1s ease all 0s;
+   font-size: 2.2em;
+}
 .header__burger{
    display: none;
 }
@@ -151,7 +187,6 @@ export default {
       width: 100%;
       height: 100%;
       padding: 110px 0px 0px 0px;
-      color: darkgray;
       background-color: black;
       transition: all 0.3s ease 0s;
       z-index: 2;
@@ -164,10 +199,12 @@ export default {
       display: block;
    }
    .container .header__menu p{
-   color: darkgray;
    font-size: 2em;
    margin: 1em 0px 0px 0px;
    text-align: center;
+}
+ .container .header__menu p.selected{
+    color: white;
 }
 }
 .non__visible{

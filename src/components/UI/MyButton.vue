@@ -14,11 +14,10 @@ border-radius: 4px;
 -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.08);
 -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.08);
 box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.08);
-color: black;
+color: gray;
 display:block;
 width:100px;
 text-align: center;
-font-family: Arial, Helvetica, sans-serif;
 font-size: 14px;
 padding: 8px 16px;
 margin: 0 auto;
@@ -30,11 +29,13 @@ text-shadow: 0 1px 1px rgba(0, 0, 0, 0.075);
 transition: background-color 0.1s linear;        
 }
 .btn {
-background-color: darkgray;
+background-color: rgb(0, 0, 0);
 border: 1px solid gray;
 }
         
 .btn:hover {
-background-color: gray;
+  border: 1px solid darkgray;
+color: darkgray;
+
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div v-for="product in products" :key='product.id'>
+  <div v-for="product in planets" :key='product.id'>
       <div v-if="product.id == number" class="planet">
           <product-item :product="product"></product-item>
       </div>
@@ -11,7 +11,7 @@ import ProductItem from './ProductItem.vue'
 export default {
   components: { ProductItem },
       props: {
-      products: {
+      planets: {
          type: Array,
          required: true
       },

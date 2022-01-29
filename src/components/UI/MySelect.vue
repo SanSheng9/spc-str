@@ -34,7 +34,12 @@ export default {
 .select{
      border: 2px solid gray;
    height: 2em;
-   background-color: darkgrey;
+   background-color: black;
    width: 100%;
+   color: darkgray;
+   outline: none;
+}
+.select:focus{
+    border: 2px solid darkgray;
 }
 </style>

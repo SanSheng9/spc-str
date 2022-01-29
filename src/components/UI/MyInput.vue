@@ -20,7 +20,15 @@ export default {
 .input {
    border: 2px solid gray;
    height: 2em;
-   background-color: darkgrey;
+   background-color: black;
+   border: none;
+   border-bottom: 1px solid gray;
    width: 100%;
+   color: darkgray;
+   outline: none;
+}
+.input:focus{
+   border-bottom: 1px solid darkgray;
+   
 }
 </style>

@@ -1,6 +1,5 @@
 <template>
   <div class="container_products">
-    <Navbar :watchAdminMode='false' @admin="adminMode"></Navbar>
     <div class="content">       
       <div class="form">
         <div class="form__search">
@@ -21,12 +20,13 @@
 </template>
 
 <script>
-import Navbar from "@/components/Navbar";
 import ProductsList from "@/components/ProductsList";
 import axios from 'axios';
 
-export default {    
-  components: { Navbar, ProductsList },
+export default {
+  name: 'products',
+  emits: "planets",    
+  components: { ProductsList },
     data() {
     return {
       products: [],
@@ -52,11 +52,13 @@ export default {
         setTimeout(async () => {
           const response = await axios('https://raw.githubusercontent.com/SanSheng9/spc-str/main/planets.json');
           this.products = response.data;
-          this.isProductsLoading = false
+          this.$emit('planets', this.products);
+          this.isProductsLoading = false;
           }, 1000)
       } catch (e) {
         alert('AHAHA ERROR')
-      } finally {}
+      } finally {
+      }
     },
     deleteProducts(planet){
       if (this.adminStatus == true) {
@@ -82,7 +84,9 @@ export default {
 <style>
 .container_products{
   max-width: 80vw;
+  height: 100vh;
   margin: 0 auto;
+  margin-top: 10vh;
 }
 .content{
   max-width: 1200px;

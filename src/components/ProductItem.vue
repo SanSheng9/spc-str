@@ -86,7 +86,7 @@ export default {
       margin: 0 auto;
    }
    .body{
-      font-size: 1em;
+      font-size: 3vw;
    }
    .product{
       margin: 0;

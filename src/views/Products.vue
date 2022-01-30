@@ -84,14 +84,14 @@ export default {
 <style>
 .container_products{
   max-width: 80vw;
-  height: 100vh;
+  min-height: 100vh;
   margin: 0 auto;
-  margin-top: 10vh;
 }
 .content{
   max-width: 1200px;
   margin: 0 auto;
-  padding-bottom: 15px;
+    padding-bottom: 15px;
+
 }
 .loading {
   margin-top: 10em;

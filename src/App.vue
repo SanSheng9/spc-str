@@ -1,8 +1,8 @@
 <template>
   <div class="app">
     <navbar @move='callFromNav' :page='pageVisible'></navbar>
-    <solar-system id="page-1" :tmblr='tmblr' :planets='planets'></solar-system>
-    <products id="page-2" @planets='giveProductsFromComp'></products>
+    <solar-system id="page-1" :tmblr='tmblr' :planets='planets' :page='pageVisible'></solar-system>
+    <products id="page-2" v-bind:style="{ paddingTop: heightPageOne + 'vh'}" @planets='giveProductsFromComp'></products>
   </div>
 </template>
 
@@ -11,7 +11,7 @@ import Navbar from './components/Navbar.vue'
 import SolarSystem from './views/SolarSystem.vue'
 import Products from './views/Products.vue'
 import $ from 'jquery'
-import { ref } from 'vue'
+import { watch, ref } from 'vue'
 
 export default {
   components: { Navbar, SolarSystem, Products },
@@ -22,11 +22,12 @@ export default {
       'page-2'
     ]
     const pageVisible = ref('')
+    const heightPageOne = ref(140)
     const tmblr = ref(false)
     // Call from Navbar
     function callFromNav(obj) { 
           window.scrollTo({
-            top: document.getElementById(obj).offsetTop - 120,     
+            top: document.getElementById(obj).offsetTop - 160,     
             behavior: "smooth"})
     }
     const giveProductsFromComp = (products) => planets.value = products;
@@ -37,6 +38,7 @@ export default {
   // Во вторую мы получаем вертикальную позиицию скролла окна браузера
     var n = 0;
     while (n < elements.length) {
+      console.log(elements[n])
     var target = document.getElementById(elements[n])
       // Все позиции элемента
     var targetPosition = {
@@ -60,7 +62,6 @@ export default {
     targetPosition.left < windowPosition.right) { // Если позиция левой стороны элемента меньше позиции правой чайти окна, то элемент виден справа
     // Если элемент полностью видно, то запускаем следующий код
        pageVisible.value = elements[n]
-       console.log(pageVisible.value)
   }
     n++;
   }
@@ -68,8 +69,16 @@ export default {
   )
   }
   )
+
+  watch(pageVisible, (newValue, oldValue) => {
+    if (pageVisible.value == 'page-1') {
+      heightPageOne.value = 20
+    } else {
+      heightPageOne.value = 0
+    }
+})
   return {
-    elements,pageVisible, tmblr, planets,
+    elements,pageVisible, tmblr, planets, heightPageOne,
     callFromNav, giveProductsFromComp
   }
   }
@@ -96,7 +105,12 @@ body {
 .app{
 }
 #page-1{
-  padding-top: 8vh;
+  padding-top: 9vh;
+  transition: all 1s ease 0s;
   min-height: 100vh;
+}
+#page-2{
+    transition: all 1s ease 0s;
+  margin-top: 15vh;
 }
 </style>

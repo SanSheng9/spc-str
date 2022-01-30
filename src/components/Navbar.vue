@@ -118,7 +118,7 @@ position: fixed;
 }
 
 .container .header__menu p{
-   color: darkgray;
+   color: gray;
    font-size: 2em;
    margin: 0px 0px 0px 1em;
 }
@@ -126,12 +126,11 @@ position: fixed;
 .header__list .link,
 .header__list .link:hover{
    text-decoration: none;
-   color: darkgray;
+   color: gray;
 }
 .header__list p.active_list{
    color: white;
    transition: 1s ease all 0s;
-   font-size: 2.2em;
 }
 .header__burger{
    display: none;

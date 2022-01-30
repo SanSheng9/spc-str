@@ -1,5 +1,6 @@
 <template>
   <div class="solar_system">
+
     <div class="solar-system" id="solar-system">    
     <div class="axis"><img src="@/assets/ss-bg.png" alt="">
       <my-dialog v-model:show="dialogVisible"><product-selected :number='numberPlanet' :planets='planets'></product-selected></my-dialog>    
@@ -14,6 +15,9 @@
         <div class="neptune" @click="selectPlanet(8)" :class="{slowed: tmblr}"><img src="@/assets/Neptune.png" alt=""></div>
       </div>
       </div>
+        <div class="click-me" v-if="page == 'page-1'">
+      Click on the planet!
+    </div>
   </div>
 </template>
 
@@ -31,13 +35,18 @@ export default {
     tmblr: {
     type: Boolean,
     default: false
-  }
+  },
+    page: {
+      type: String,
+      default: 'page-1'
+    }
   },
   data() {
     return {
       planet: [],
       dialogVisible: false,
       numberPlanet: '',
+      ifPhone: false
     }
     },
     methods: {
@@ -45,7 +54,16 @@ export default {
         this.numberPlanet = num;
         this.dialogVisible = true;
       },
-}}
+      ifUsePhone(){
+        if (window.screen.width < window.screen.height) {
+          this.ifPhone = true
+        }
+      }
+},
+mounted() {
+  this.ifUsePhone()
+}
+}
 </script>
 
 <style>
@@ -174,5 +192,21 @@ top: 59vw;
 .content-planets{
   color: darkgray;
   margin-top: 2em;
+}
+.click-me{
+  margin: 0 auto;
+  color: darkgray;
+  font-size: 4vw;
+  text-align: center;
+  animation: blinker 1s linear 999992;
+  opacity: 0;
+  margin-top: 1vh;
+  z-index: 50;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 100;
+  }
 }
 </style>

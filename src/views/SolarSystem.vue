@@ -54,14 +54,16 @@ export default {
   margin: 0 auto;
   margin-bottom: 5vh;
 }
-.solar_system img{
-  max-width: 100%;
-}
+
 
 
 .solar-system{
   position: relative;
   margin-top: 5vw;
+  max-width: 300px;
+}
+.solar_system img{
+  max-width: 100%;
 }
 @media (max-width: 968px) {
   .solar-system{
@@ -72,7 +74,7 @@ export default {
   color: darkgray;
 }
 .axis {
-  width: 80vw;
+  min-width: 80vw;
   margin: 0 auto;
   position: relative;
 }

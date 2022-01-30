@@ -35,7 +35,7 @@ export default {
          default: true,
       },
       page: {
-         type: Number 
+         type: String
       }
    },
    data() {
@@ -43,7 +43,7 @@ export default {
        activeBurger: false,
        selectMain: true,
        selectProducts: false,
-       activeSs: true,
+       activeSs: false,
        activeProd: false,
     } 
   },
@@ -54,14 +54,15 @@ export default {
      }
 },
 watch: {
-   page(newPage, oldPage){
-      if (newPage == 1 && oldPage == 0) {
+   page(newPage){
+      if (newPage == 'page-1') {
          this.activeSs = true
          this.activeProd = false
-      } else {
+      } else if (newPage == 'page-2') {
          this.activeProd = true
          this.activeSs = false
-      }
+      } else if (newPage == 'none') {this.activeProd = false
+      this.activeSs = false}
    }
 }
 }
@@ -70,14 +71,17 @@ watch: {
 <style scoped>
 .header {
    min-width: 100%;
-   height: 7vh;
+   height: 120px;
    text-transform: uppercase;
    z-index: 50;
-background: rgb(0,0,0);
-background: linear-gradient(180deg, rgba(0,0,0,1) 41%, rgba(1,1,1,0.6867121848739496) 61%, rgba(1,1,1,0.5998774509803921) 77%, rgba(1,1,1,0.33657212885154064) 90%, rgba(255,255,255,0) 100%);  position: fixed;
    top: 0;
    left: 0;
    padding-bottom: 20px;
+background: rgba(1, 1, 1, 0.1);
+background: -webkit-linear-gradient(bottom, rgba(1, 1, 1, 0.1), rgba(1, 1, 1, 1.0));
+background: -moz-linear-gradient(bottom, rgba(1, 1, 1, 0.1), rgba(1, 1, 1, 1.0));
+background: linear-gradient(to top, rgba(1, 1, 1, 0.1), rgba(1, 1, 1, 1.0));
+position: fixed;
 }
 .container{
    max-width: 70%;

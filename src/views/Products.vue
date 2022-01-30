@@ -91,6 +91,7 @@ export default {
 .content{
   max-width: 1200px;
   margin: 0 auto;
+  padding-bottom: 15px;
 }
 .loading {
   margin-top: 10em;

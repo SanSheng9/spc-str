@@ -1,5 +1,5 @@
 <template>
-  <div class="app" @scroll="visibleElement">
+  <div class="app">
     <navbar @move='callFromNav' :page='pageVisible'></navbar>
     <solar-system id="page-1" :tmblr='tmblr' :planets='planets'></solar-system>
     <products id="page-2" @planets='giveProductsFromComp'></products>
@@ -16,8 +16,11 @@ import { ref } from 'vue'
 export default {
   components: { Navbar, SolarSystem, Products },
   setup() {
-    const planets = ref(['']) 
-    const elements = ref(['page-1', 'page-2'])
+    const planets = ref([''])
+    const elements = [
+      'page-1', 
+      'page-2'
+    ]
     const pageVisible = ref('')
     const tmblr = ref(false)
     // Call from Navbar
@@ -32,16 +35,39 @@ export default {
     $(window).on('scroll', () => {
   // В первую переменную мы получаем координаты относительно верха блока который нам нужен
   // Во вторую мы получаем вертикальную позиицию скролла окна браузера
-    var blockPosition = document.getElementById('page-1').offsetTop
-    var windowScrollPosition = $(window).scrollTop();
-    if( blockPosition + 700 < windowScrollPosition ) {
-        pageVisible.value = 0
-        tmblr.value = false
-    } else { pageVisible.value = 1
-            tmblr.value = true
-    }
-    })})
-
+    var n = 0;
+    while (n < elements.length) {
+    var target = document.getElementById(elements[n])
+      // Все позиции элемента
+    var targetPosition = {
+      top: window.pageYOffset + target.getBoundingClientRect().top,
+      left: window.pageXOffset + target.getBoundingClientRect().left,
+      right: window.pageXOffset + target.getBoundingClientRect().right,
+      bottom: window.pageYOffset + target.getBoundingClientRect().bottom
+    },
+    
+    // Получаем позиции окна
+    windowPosition = {
+      top: window.pageYOffset,
+      left: window.pageXOffset,
+      right: window.pageXOffset + document.documentElement.clientWidth,
+      bottom: window.pageYOffset + document.documentElement.clientHeight
+    };
+ 
+     if (targetPosition.bottom > windowPosition.top && // Если позиция нижней части элемента больше позиции верхней чайти окна, то элемент виден сверху
+    targetPosition.top < windowPosition.bottom && // Если позиция верхней части элемента меньше позиции нижней чайти окна, то элемент виден снизу
+    targetPosition.right > windowPosition.left && // Если позиция правой стороны элемента больше позиции левой части окна, то элемент виден слева
+    targetPosition.left < windowPosition.right) { // Если позиция левой стороны элемента меньше позиции правой чайти окна, то элемент виден справа
+    // Если элемент полностью видно, то запускаем следующий код
+       pageVisible.value = elements[n]
+       console.log(pageVisible.value)
+  }
+    n++;
+  }
+  }
+  )
+  }
+  )
   return {
     elements,pageVisible, tmblr, planets,
     callFromNav, giveProductsFromComp
@@ -68,5 +94,9 @@ body {
   background-color: rgb(0, 0, 0);
 }
 .app{
+}
+#page-1{
+  padding-top: 8vh;
+  min-height: 100vh;
 }
 </style>

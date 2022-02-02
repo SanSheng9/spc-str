@@ -72,9 +72,10 @@ export default {
 
   watch(pageVisible, (newValue, oldValue) => {
     if (pageVisible.value == 'page-1') {
-      heightPageOne.value = 20
+      heightPageOne.value = 50
     } else {
       heightPageOne.value = 0
+      callFromNav('page-2')
     }
 })
   return {
@@ -105,12 +106,10 @@ body {
 .app{
 }
 #page-1{
-  padding-top: 9vh;
-  transition: all 1s ease 0s;
+  transition: all 0.4s ease 0s;
   min-height: 100vh;
 }
 #page-2{
-    transition: all 1s ease 0s;
-  margin-top: 15vh;
+  transition: all 0.4s ease 0s;
 }
 </style>

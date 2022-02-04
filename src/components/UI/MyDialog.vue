@@ -29,7 +29,8 @@
     background: rgba(0, 0, 0, 0.555);
     position: fixed;
     display: flex;
-    z-index: 10;
+    z-index: 10
+
 }
 .dialog__content{
     margin: auto;

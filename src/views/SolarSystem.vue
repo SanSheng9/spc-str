@@ -76,28 +76,23 @@ mounted() {
 
 
 .solar-system{
-  position: relative;
-  margin-top: 5vw;
-  max-width: 300px;
+  margin-top: 10vh;
 }
 .solar_system img{
   max-width: 100%;
 }
 @media (max-width: 968px) {
   .solar-system{
-    margin-top: 10em;
+    margin-top: 25vh;
   }
 }
 .planets{
   color: darkgray;
 }
 .axis {
-  min-width: 80vw;
-  margin: 0 auto;
+  max-width: 80vw;
   position: relative;
-}
-.axis img{
-  width: 100%;
+
 }
 .axis .stoped{
 } 
@@ -116,10 +111,9 @@ mounted() {
 }
 .mercury {
   width: 1vw;
-  position: absolute;
+  position: relative;
   animation: moving 2s infinite linear;
-  top: 45.5vw;
-  left: 45.5vw;
+    top: -34.5vw;  left: 45.5vw;
   transform-origin: -5.3vw -5.3vw;}
 .venus { 
   width: 2.5vw;

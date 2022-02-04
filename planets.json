@@ -79,35 +79,5 @@
         "img": "NeptuneR.svg",
         "mass": "102413000000",
         "body": "Neptune 1s the eighth and farthest-known Solar planet from the Sun. In the Solar System, it is the fourth-largest planet by diameter, the third-most-massive planet, and the densest giant planet."
-    },
-    {
-        "id": 9,
-        "name": "Deimos",
-        "class": "Satelite",
-        "parent": "Mars",
-        "img": "",
-        "mass": "1.4762",
-        "body": "Deimos /ˈdaɪmɒs/ (systematic designation: Mars II) is the smaller and outermost of the two natural satellites of Mars, the other being Phobos. Deimos has a mean radius of 6.2 km (3.9 mi) and takes 30.3 hours to orbit Mars. Deimos is 23,460 km (14,580 mi) from Mars, much farther than Mars's other moon, Phobos."
-    },
-    {
-        "id": 10,
-        "name": "",
-        "img": "",
-        "mass": "",
-        "body": ""
-    },
-    {
-        "id": 11,
-        "name": "",
-        "img": "",
-        "mass": "",
-        "body": ""
-    },
-    {
-        "id": 12,
-        "name": "",
-        "img": "",
-        "mass": "",
-        "body": ""
     }
 ]

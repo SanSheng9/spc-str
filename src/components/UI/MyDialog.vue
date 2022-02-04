@@ -34,7 +34,7 @@
 .dialog__content{
     margin: auto;
     background: black;
-    border: 1px solid grey;
+    border: 1px solid rgb(70, 70, 70);
     min-height: 10em;
     min-width: 10em;
     padding: 20px;

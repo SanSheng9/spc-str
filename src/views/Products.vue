@@ -13,6 +13,8 @@
           <my-select :options='sortOptions' v-model="selectedSort"/>
         </div>
       </div>
+            <div class="form__filters">
+        </div>
         <ProductsList v-if="!isProductsLoading" @delete='deleteProducts' :products='sortedAndSearchProducts' :admin='adminStatus'></ProductsList>
         <div v-else class="loading"><img src="@/assets/loading.gif" alt=""></div>
     </div>
@@ -133,5 +135,8 @@ export default {
       margin-bottom: 10vw;
       display: block;
     }
+  }
+  .form__filters{
+    margin-top: 10px;
   }
 </style>
